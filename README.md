@@ -19,3 +19,29 @@
     - Downstream -> towards the sink <- - - - -
   * `Graph` : Upstream --> Source --> Flow --> Flow --> Sink
   
+#### Materializing Value's
+* Getting a meaningful value out of a running Stream
+* Components are static until they run 
+```
+ val graph = source.via(flow).to(sink)
+ val result = graph.run() ==> result -> Materialized value
+```
+* A graph is a `blueprint` for a stream
+* Running a graph allocates the right resources
+  * Creating actor's
+  * Allocation thread pools, sockets, connections, etc... everything is transparent 
+
+* Running a graph is `Materializing`
+* Materializing a graph = materializing all components in that graph
+* Each component produces a materialized value when run
+* the graph produces a `single` materialized value (by default leftmost component value `Keep.left`)
+    * can change by using `xxxMat(Keep.xxx())`,  Keep contains #left, #right, #both (left, right), #none
+    * our job to choose which one to pick
+    
+* A component can materialize multiple times
+    * you can reuse the same component in different graphs
+    * different runs = different materialization's!
+* A materialized value can be `ANYTHING`
+    * NotUsed -> combination of scala's Unit & Java's Void
+    * Future[Any]
+    * etc...

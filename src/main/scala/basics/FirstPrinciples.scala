@@ -1,4 +1,4 @@
-package basicks
+package basics
 
 import akka.actor.ActorSystem
 import akka.stream.scaladsl.{Flow, RunnableGraph, Sink, Source}
