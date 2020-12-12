@@ -115,3 +115,12 @@ source.async
     * Everything from the previous boundary (if any)
     * Everything between the previous boundary and current boundary
 * Communication based on actor messages
+
+### BackPressure
+* One of the fundamental features of `Reactive Streams`
+* Elements flow as response to demand from consumers
+* Fast Consumers : all is well
+* Slow Consumers: Problem
+    * consumer will send a signal to producer to slow down using Backpressure Protocol
+* Akka Streams can slow down fast producers
+* Backpressure protocol is transparent
