@@ -124,3 +124,5 @@ source.async
     * consumer will send a signal to producer to slow down using Backpressure Protocol
 * Akka Streams can slow down fast producers
 * Backpressure protocol is transparent
+
+### Streams Graph
